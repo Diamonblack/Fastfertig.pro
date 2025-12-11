@@ -204,3 +204,7 @@ section { padding: 6rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
     .profile-frame { width: 250px; height: 250px; }
     .page-header { padding-top: 100px; }
 }
+
+.logo img {
+    height: 40px;
+}
