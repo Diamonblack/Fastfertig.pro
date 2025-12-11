@@ -43,6 +43,7 @@
 
         <section>
             <div class="container article-content">
+                <img src="batterypack/IMG_20220731_080049.jpg" alt="Completed DIY electric longboard with carbon fiber deck and Stark Industries theme">
                 <p>This is not about “throwing some 18650s into a box”. These packs are designed like small industrial projects: defined voltage levels, targeted current capability, deliberate cell choice, smart BMS integration, and custom software to make everything measurable and controllable.</p>
                 <p><strong>Two main systems:</strong></p>
                 <ul>
@@ -55,6 +56,7 @@
                 
                 <h3>Electrical Specs</h3>
                 <p>Space inside the deck was brutally limited, so the pack geometry dictated everything. The result: a 12s4p pack built from Sony/Murata VTC6 cells.</p>
+                <img src="batterypack/20250604_104448.jpg" alt="DIY longboard battery pack during assembly, showing the 12s4p cell layout in a black holder.">
                 <ul>
                     <li><strong>Configuration:</strong> 12s4p</li>
                     <li><strong>Cell type:</strong> VTC6, ~3.0 Ah, true high-drain cells</li>
@@ -93,6 +95,7 @@
 
                 <h3>Mechanics, Busbars, and Thermals</h3>
                 <p>With 12s4p you get high energy density, but also serious currents: 60–90 A through the pack means 15–22.5 A per cell in a 4p group. That’s exactly the range where VTC6 makes sense. To handle that cleanly:</p>
+                <img src="batterypack/20210213_174858.jpg" alt="Finished carbon fiber enclosure for the longboard battery pack, showing a clean and robust mechanical design.">
                 <ul>
                     <li>Nickel + copper “sandwich” busbars to keep resistance low and spread heat.</li>
                     <li>Short current paths to minimize voltage drop and hot spots.</li>
@@ -105,6 +108,7 @@
                 <p>The e-bike project goes a step further. Here, the goal isn’t “fit into a tiny cavity”, it’s power reserve. The idea: an e-bike that behaves much more like a lightweight motorcycle than a city pedelec.</p>
                 
                 <h3>Configuration and Power Target</h3>
+                <img src="batterypack/20250604_172442.jpg" alt="E-bike battery pack wrapped in green tape during assembly, with cell group numbers marked.">
                 <ul>
                     <li><strong>Pack:</strong> 20s4p</li>
                     <li><strong>Cell class:</strong> High-drain cells on the level of Reliance RS50 (serious high-power segment)</li>
@@ -131,6 +135,7 @@
 
                 <h3>Pack Construction: 20s4p on Motorcycle Level</h3>
                 <p>Requirements here are harsher than on the longboard due to higher duty cycles and mechanical abuse. Design choices:</p>
+                <img src="batterypack/20250605_160959.jpg" alt="Fully assembled 20s4p e-bike battery pack with thick power leads and integrated BMS.">
                 <ul>
                     <li>Copper-reinforced busbars to keep voltage drop low at >100 A.</li>
                     <li>Clear segmentation: 20 series groups, each a 4p block with its own sense wire to the BMS.</li>
@@ -143,9 +148,12 @@
                 <p>Bare cells only get you raw potential. The smart BMS layer turns that into a controlled, observable system.</p>
                 <h3>BMS Capabilities</h3>
                 <p>The chosen Smart BMS platform provides per-series-group voltage measurement, multiple temperature sensors, and an integrated shunt for current measurement. It communicates via UART/CAN and Bluetooth and provides protection against over/undervoltage, overcurrent, and short-circuits, along with cell balancing and fault logging.</p>
+                <img src="batterypack/20250605_130201.jpg" alt="Complex wiring of the Smart BMS during assembly, showing the numerous balance leads.">
                 
                 <h3>Custom Software – From BMS Data to Live Telemetry</h3>
                 <p>The interesting part is the custom software wrapped around the BMS. The goal: the pack should behave like a defined energy server, not a black box. A small service (e.g., in Python) polls the BMS, normalizes the data (voltage, current, SoC, temps), and logs it. On top of that, live dashboards and alarm logic can be built for voltage deviation, over-temperature, or current spikes. This allows for software-side limits, like derating power at high temps or low SoC.</p>
+                <img src="batterypack/20250605_143718.jpg" alt="Neatly routed wiring on the finished Smart BMS, an example of a clean and serviceable build.">
+                <img src="batterypack/20250604_172119.jpg" alt="A multimeter showing a voltage reading of over 70V from the e-bike pack, demonstrating the measurement capabilities.">
 
                 <h2 style="margin-top: 4rem;">Challenges and Lessons Learned</h2>
                 <ol>

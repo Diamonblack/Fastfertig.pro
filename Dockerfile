@@ -16,6 +16,7 @@ COPY home-automation.html /usr/share/nginx/html/home-automation.html
 COPY sensor-fusion.html /usr/share/nginx/html/sensor-fusion.html
 COPY Marcel.webp /usr/share/nginx/html/Marcel.webp
 COPY fav.png /usr/share/nginx/html/fav.png
+COPY batterypack/ /usr/share/nginx/html/batterypack/
 
 # SEO Files
 COPY robots.txt /usr/share/nginx/html/robots.txt
