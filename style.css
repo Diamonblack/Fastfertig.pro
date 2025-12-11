@@ -126,8 +126,7 @@ section { padding: 6rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
     z-index: 1000; display: flex; align-items: center;
 }
 .navbar-content { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-.logo { font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
-.logo span { color: var(--primary); }
+.logo { }
 .nav-meta { font-size: 0.85rem; color: var(--text-muted); display: flex; gap: 1.5rem; }
 .nav-meta span { display: flex; align-items: center; gap: 8px; }
 .nav-meta i { color: var(--text-accent); }
@@ -205,6 +204,20 @@ section { padding: 6rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
     .page-header { padding-top: 100px; }
 }
 
+/* Styling for the logo link container */
+.logo {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Styling for the logo image itself */
 .logo img {
     height: 40px;
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.05);
 }
