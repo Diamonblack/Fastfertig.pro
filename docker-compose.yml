@@ -1,0 +1,15 @@
+services:
+  portfolio:
+    build: .
+    container_name: portfolio-site
+    restart: unless-stopped
+    ports:
+      # WICHTIG: Port 8091 (Host) -> 80 (Container), damit der Tunnel es findet
+      - "8091:80"
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    external: true
+    name: proxy_proxy-net
