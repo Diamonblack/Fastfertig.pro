@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Automation Cluster | Marcel Bechter</title>
+    <meta name="description" content="Project page for the Home Automation Cluster.">
+    <link rel="icon" href="assets/images/fav.png" type="image/png">
+
+    <!-- TRACKING (Do not remove) -->
+    <script defer src="https://stats.fastfertig.pro/script.js" data-website-id="0356dd06-2855-4a6a-917d-a9e7f36de339"></script>
+    
+    <!-- FONTS & ICONS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- GLOBAL STYLE -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Sticky Clean Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="index.html" class="logo"><img src="assets/images/fav.png" alt="Site Logo"></a>
+            <div class="nav-meta">
+                <span><i class="fa-solid fa-location-dot"></i> Feldkirch, AT</span>
+                <span><i class="fa-solid fa-envelope"></i> bechter.m @gmail.com</span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="page-header bg-surface">
+            <div class="container">
+                <span class="mono">Project Deep Dive</span>
+                <h1>Home Automation Cluster</h1>
+                <p class="hero-sub">Edge-Cluster für Hausautomation: Proxmox-HA, Zigbee/KNX/Modbus, TS-Stack (InfluxDB + Grafana) und Automationen auf Node-RED.</p>
+                <a href="index.html#lab" class="btn btn-outline" style="margin-top: 2rem;">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Projects
+                </a>
+            </div>
+        </header>
+
+        <section class="cluster-section">
+            <div class="container">
+                <div class="section-top">
+                    <div>
+                        <span class="mono">Live Stack</span>
+                        <h2>Topology & Datenfluss</h2>
+                        <p class="hero-sub">Redundanter Edge-Cluster mit klar getrennten VLANs, MQTT als Backbone und observability-first (InfluxDB, Grafana, Alerts).</p>
+                        <div class="badge-row">
+                            <span class="pill">Proxmox HA</span>
+                            <span class="pill">MQTT Backbone</span>
+                            <span class="pill">Node-RED Playbooks</span>
+                            <span class="pill">Influx + Grafana</span>
+                        </div>
+                    </div>
+                    <div class="stat-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">Sensoren</div>
+                            <div class="stat-value">48</div>
+                            <div class="stat-sub">Zigbee, Modbus, KNX</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Automationen</div>
+                            <div class="stat-value">120+</div>
+                            <div class="stat-sub">Node-RED + JS</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Dashboards</div>
+                            <div class="stat-value">6</div>
+                            <div class="stat-sub">Grafana Wallboards</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Alerts</div>
+                            <div class="stat-value success">Real-Time</div>
+                            <div class="stat-sub">Push + Mail</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="diagram-grid">
+                    <div class="diagram-card">
+                        <div class="diagram-head">
+                            <h3>Service Topology</h3>
+                            <span class="pill pill-ghost">HA Core</span>
+                        </div>
+                        <div class="mermaid">
+graph TD
+    Internet([WAN]) --> Router((Ubiquiti))
+    Router --> Core[Automation Core<br/>Proxmox HA]
+    Core --> VM1[VM1: MQTT + Zigbee2MQTT]
+    Core --> VM2[VM2: Node-RED Playbooks]
+    Core --> VM3[VM3: InfluxDB + Grafana]
+    Router -. VLAN IoT .-> Devices{{Zigbee / KNX / Modbus}}
+    VM1 --> Broker[(MQTT Backbone)]
+    Broker --> VM2
+    VM2 --> Rules[Automations]
+    Rules --> Scenes[[Lights | HVAC | Access]]
+    Broker --> VM3
+    VM3 --> Dash[(Grafana Wallboards)]
+    Rules --> Alerts{{Alerting}}
+    Alerts --> Phone[[Push / Opsgenie]]
+                        </div>
+                    </div>
+
+                    <div class="diagram-card">
+                        <div class="diagram-head">
+                            <h3>Data & Control Flow</h3>
+                            <span class="pill pill-ghost">Observability</span>
+                        </div>
+                        <div class="mermaid">
+flowchart LR
+    SENS[[Sensoren<br/>Energy | Klima | Access]] --> MQTT[(MQTT Bus)]
+    MQTT --> NR[Node-RED<br/>Playbooks]
+    NR --> ACT{{Aktoren<br/>HVAC | Licht | EV}}
+    MQTT --> TS[(TimeSeries<br/>InfluxDB)]
+    TS --> GRAF[Grafana / Digital Twin]
+    NR --> QA{Health / Sanity}
+    QA --> ALERTS[[Alerts<br/>Push / Mail]]
+    GRAF --> Board[(Status Wallboard)]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p style="margin-bottom: 2rem;">
+                &copy; 2025 Marcel Bechter. Built with clean code & no clutter.
+            </p>
+        </div>
+    </footer>
+
+    <script src="scripts/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: "dark",
+            themeVariables: {
+                primaryColor: "#0f172a",
+                primaryTextColor: "#e2e8f0",
+                primaryBorderColor: "#334155",
+                lineColor: "#38bdf8",
+                secondaryColor: "#1e293b",
+                tertiaryColor: "#111827"
+            }
+        });
+    </script>
+
+</body>
+</html>

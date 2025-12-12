@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture Report: Composable ERP & Clean Core | Marcel Bechter</title>
+    <meta name="description" content="An in-depth analysis of the shift from monolithic to composable ERP architectures in the context of Industry 4.0, focusing on the Lake Constance region.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script defer src="https://stats.fastfertig.pro/script.js" data-website-id="0356dd06-2855-4a6a-917d-a9e7f36de339"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">MARCEL<span class="text-accent">BECHTER</span></a>
+            <a href="index.html#insights" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Overview</a>
+        </div>
+    </nav>
+    
+    <section class="page-header">
+        <div class="container" id="report-container">
+            <div class="lang-switch center-flex mb-1">
+                <button class="lang-btn" onclick="switchLang('de')">DE</button>
+                <button class="lang-btn active" onclick="switchLang('en')">EN</button>
+            </div>
+
+            <div class="report-content lang-de hidden">
+                <h2>Architekturwandel in der Enterprise IT</h2>
+                <p class="subtitle">Von Monolithen zu Composable ERP und Clean Core Strategien in der Industrie 4.0 – Eine tiefgehende Analyse der Region Alpenrheintal und Bodensee.</p>
+                
+                <h4>Zusammenfassung</h4>
+                <p>Die vorliegende Forschungsarbeit untersucht die fundamentale Transformation von Enterprise Resource Planning (ERP) Architekturen im Kontext der Industrie 4.0, mit einem spezifischen geographischen Fokus auf die hochindustrialisierten Regionen Liechtenstein, Ostschweiz und Westösterreich (Vorarlberg, Tirol). Angesichts volatiler Märkte und technologischer Disruptionen stehen etablierte Fertigungsunternehmen vor dem Dilemma, ihre historisch gewachsenen, monolithischen Kernsysteme ("Systems of Record") mit der Notwendigkeit für agile, datengetriebene Innovationen ("Systems of Differentiation") in Einklang zu bringen.</p>
+
+                <h4>1. Einleitung: Das architektonische Dilemma der digitalen Agilität</h4>
+                <p>Die Unternehmens-IT in der Fertigungsindustrie befindet sich an einem historischen Wendepunkt. Über Jahrzehnte hinweg bildeten monolithische ERP-Systeme das unverzichtbare Rückgrat der betrieblichen Wertschöpfung. Doch in einer Ära, die durch Hyperwettbewerb, verkürzte Produktlebenszyklen und die Forderung nach Losgröße 1 geprägt ist, werden diese einstigen Stabilitätsanker zunehmend als Innovationsbremse wahrgenommen.</p>
+            </div>
+
+            <div class="report-content lang-en">
+                <h2>Architectural Change in Enterprise IT</h2>
+                <p class="subtitle">From Monoliths to Composable ERP and Clean Core Strategies in Industry 4.0 – An In-depth Analysis of the Alpine Rhine and Lake Constance Region.</p>
+
+                <h4>Summary</h4>
+                <p>This research paper examines the fundamental transformation of Enterprise Resource Planning (ERP) architectures in the context of Industry 4.0, with a specific geographical focus on the highly industrialized regions of Liechtenstein, Eastern Switzerland, and Western Austria (Vorarlberg, Tyrol). Faced with volatile markets and technological disruptions, established manufacturing companies are confronted with the dilemma of reconciling their historically grown, monolithic core systems ("Systems of Record") with the need for agile, data-driven innovations ("Systems of Differentiation").</p>
+
+                <h4>1. Introduction: The Architectural Dilemma of Digital Agility</h4>
+                <p>Corporate IT in the manufacturing industry is at a historic turning point. For decades, monolithic ERP systems formed the indispensable backbone of operational value creation. However, in an era characterized by hyper-competition, shortened product life cycles, and the demand for lot size 1, these former anchors of stability are increasingly perceived as a brake on innovation.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <a href="index.html" class="btn">Back to Homepage</a>
+            <div class="copyright mt-2">&copy; 2025 Marcel Bechter.</div>
+        </div>
+    </footer>
+
+    <script>
+        function switchLang(lang) {
+            const container = document.getElementById('report-container');
+            const deElements = container.querySelectorAll('.lang-de');
+            const enElements = container.querySelectorAll('.lang-en');
+            
+            if (lang === 'de') {
+                deElements.forEach(el => el.classList.remove('hidden'));
+                enElements.forEach(el => el.classList.add('hidden'));
+                container.querySelectorAll('.lang-btn')[0].classList.add('active');
+                container.querySelectorAll('.lang-btn')[1].classList.remove('active');
+            } else {
+                deElements.forEach(el => el.classList.add('hidden'));
+                enElements.forEach(el => el.classList.remove('hidden'));
+                container.querySelectorAll('.lang-btn')[0].classList.remove('active');
+                container.querySelectorAll('.lang-btn')[1].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
